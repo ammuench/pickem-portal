@@ -27,6 +27,7 @@ import { HeaderComponent } from "./components/header/header.component";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     HeaderComponent,
     LoginPageComponent,
     HomePageComponent,
+    SignUpPageComponent,
   ],
   imports: [
     //ANGULAR

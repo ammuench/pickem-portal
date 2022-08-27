@@ -1,15 +1,15 @@
-.c_loginPage {
+.c_signUpPage {
   display: grid;
   justify-content: center;
   align-content: center;
   height: 100%;
 }
 
-.c_loginCard {
+.c_signUpCard {
   max-width: 300px;
 }
 
-.c_loginForm {
+.c_signUpForm {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: 100%;
@@ -17,10 +17,10 @@
   gap: 2rem 0;
 }
 
-.c_loginForm__buttons {
+.c_signUpForm__buttons {
   text-align: right;
 }
 
-.c_loginPage__signupCopy {
+.c_signUpPage__signupCopy {
   text-align: center;
 }

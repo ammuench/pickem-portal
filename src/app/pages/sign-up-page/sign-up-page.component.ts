@@ -1,20 +1,20 @@
 import { Component, OnInit } from "@angular/core";
 import {
-  FormBuilder,
   FormControl,
   Validators,
+  FormBuilder,
 } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { AuthService } from "@services/auth/auth.service";
 import { clearUserData } from "@userstate/user.actions";
 
 @Component({
-  selector: "app-login-page",
-  templateUrl: "./login-page.component.html",
-  styleUrls: ["./login-page.component.scss"],
+  selector: "app-sign-up-page",
+  templateUrl: "./sign-up-page.component.html",
+  styleUrls: ["./sign-up-page.component.scss"],
 })
-export class LoginPageComponent implements OnInit {
-  public loginForm = this._fb.group({
+export class SignUpPageComponent implements OnInit {
+  public signupForm = this._fb.group({
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required]),
   });
@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit {
     this._store.dispatch(clearUserData());
   }
 
-  public submitLogin(): void {
+  public submitSignup(): void {
 
   }
 }

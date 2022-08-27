@@ -1,7 +1,7 @@
-<div class="c_loginPage">
-  <div class="c_loginCard">
-    <p-card header="Login">
-      <form [formGroup]="loginForm" class="c_loginForm">
+<div class="c_signUpPage">
+  <div class="c_signUpCard">
+    <p-card header="Create an Account">
+      <form [formGroup]="signupForm" class="c_signUpForm">
         <div>
           <span class="p-float-label p-input-icon-left">
             <i class="pi pi-user"></i>
@@ -23,14 +23,14 @@
         </div>
       </form>
       <ng-template pTemplate="footer">
-        <div class="c_loginForm__buttons">
+        <div class="c_signUpForm__buttons">
           <p-button>Login</p-button>
         </div>
       </ng-template>
     </p-card>
-    <p class="c_loginPage__signupCopy">
-      Need an account?
-      <a routerLink="/signup">Sign-up instead!</a>
+    <p class="c_signUpPage__signupCopy">
+      Already have an account?
+      <a routerLink="/login">Log In instead!</a>
     </p>
   </div>
 </div>
