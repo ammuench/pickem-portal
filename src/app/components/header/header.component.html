@@ -5,9 +5,9 @@
 
   <div class="p-toolbar-group-right">
     <ng-container *ngIf="userIsLoggedIn$ | async">
-      <p-button icon="pi pi-search"></p-button>
-      <p-button icon="pi pi-calendar" styleClass="p-button-success"></p-button>
-      <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
+      <button pButton type="button" class="p-button-danger" (click)="logOut()">
+        Log Out
+      </button>
     </ng-container>
   </div>
 </p-toolbar>

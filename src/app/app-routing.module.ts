@@ -1,20 +1,28 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AuthGuard } from "./guards/auth.guard";
+import { AuthGuard, redirectUnauthorizedTo } from "@angular/fire/auth-guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component";
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["/login"]);
 
 const routes: Routes = [
   {
     path: "",
     component: HomePageComponent,
     canActivate: [AuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin,
+    },
   },
   {
     path: "home",
     component: HomePageComponent,
     canActivate: [AuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin,
+    },
   },
   {
     path: "login",

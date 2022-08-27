@@ -1,4 +1,4 @@
-import { UserCredential } from "@angular/fire/auth";
+import { User, UserCredential } from "@angular/fire/auth";
 import { createAction, props } from "@ngrx/store";
 import { LoginCredentials } from "@services/auth/auth.types";
 
@@ -24,6 +24,11 @@ export const signupUser = createAction(
 export const signupUserError = createAction(
   "[User] SignUp User Error",
   props<{ error: string }>()
+);
+
+export const restoreUserSession = createAction(
+  "[User] Restore User Sesssion",
+  props<{ userData: User }>()
 );
 
 export const setUserData = createAction(
