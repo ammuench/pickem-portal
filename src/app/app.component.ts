@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -6,5 +7,9 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  public title = "pickem-portal";
+  constructor(private _activatedRouteSnap: ActivatedRoute) { }
+
+  public ngOnInit(): void {
+    console.log(this._activatedRouteSnap.snapshot);
+  }
 }

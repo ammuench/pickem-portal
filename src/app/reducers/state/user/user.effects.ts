@@ -72,7 +72,6 @@ export class UserEffects {
       ofType(setUserData),
       map((userData) => {
         localStorage.setItem(LocalStorageKeys.USER, JSON.stringify(userData));
-        this._router.navigate(["/home"]);
         return {
           type: "NOOP_ACTION",
         };

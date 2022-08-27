@@ -8,6 +8,7 @@ import { Store } from "@ngrx/store";
 import { AuthService } from "@services/auth/auth.service";
 import { LoginCredentials } from "@services/auth/auth.types";
 import { clearUserData, loginUser } from "@userstate/user.actions";
+import { selectLoginError } from "@userstate/user.selectors";
 import {
   map,
   Observable,
@@ -34,6 +35,7 @@ export class LoginPageComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    this.loginError$ = this._store.select(selectLoginError);
     this._store.dispatch(clearUserData());
   }
 
@@ -43,7 +45,7 @@ export class LoginPageComponent implements OnInit {
     }
 
     return this.loginError$.pipe(
-      map((loginError) => !!loginError || false)
+      map((loginError) => (loginError === null) ? false : true)
     );
   }
 
