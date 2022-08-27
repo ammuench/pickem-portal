@@ -24,6 +24,9 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles/variables", "src/styles/"]
+            },
             "styles": [
               "src/styles.scss",
               "node_modules/primeng/resources/themes/vela-orange/theme.css",
@@ -92,6 +95,9 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles/variables", "src/styles/"]
+            },
             "styles": ["src/styles.scss"],
             "scripts": []
           }
