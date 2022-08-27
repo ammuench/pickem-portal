@@ -1,9 +1,11 @@
 
 import { createReducer, on } from "@ngrx/store";
-import { setUserData } from "./user.actions";
+import { clearUserData, setUserData } from "./user.actions";
+
+export type User = any;
 
 export interface UserState {
-  user: any | null;
+  user: User | null;
 }
 
 export const initialState: UserState = {
@@ -15,5 +17,6 @@ export const userReducer = createReducer(
   on(setUserData, (state, { userData }): UserState => ({
     ...state,
     user: userData,
-  }))
+  })),
+  on(clearUserData, (): UserState => initialState)
 );

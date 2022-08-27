@@ -107,6 +107,16 @@
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "pickem-portal:build:production",
+            "firebaseProject": "pickem-portal-dev",
+            "firebaseHostingSite": "pickem-portal-dev"
+          }
         }
       }
     }

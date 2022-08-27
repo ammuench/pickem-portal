@@ -4,8 +4,10 @@
   </div>
 
   <div class="p-toolbar-group-right">
-    <p-button icon="pi pi-search"></p-button>
-    <p-button icon="pi pi-calendar" styleClass="p-button-success"></p-button>
-    <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
+    <ng-container *ngIf="userIsLoggedIn$ | async">
+      <p-button icon="pi pi-search"></p-button>
+      <p-button icon="pi pi-calendar" styleClass="p-button-success"></p-button>
+      <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
+    </ng-container>
   </div>
 </p-toolbar>

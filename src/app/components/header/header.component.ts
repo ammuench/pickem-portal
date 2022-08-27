@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { Observable, of } from "rxjs";
+import { selectLoginState } from "@userstate/user.selectors";
 
 @Component({
   selector: "app-header",
@@ -6,8 +9,14 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
+  public userIsLoggedIn$: Observable<boolean> = of(false);
+
+  constructor(private _store: Store) {
+
+  }
+
   public ngOnInit(): void {
-    console.log("Hello");
+    this.userIsLoggedIn$ = this._store.select(selectLoginState);
   }
 
 }

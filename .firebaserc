@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pickem-portal-dev": {
+      "hosting": {
+        "pickem-portal": [
+          "pickem-portal-dev"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pickem-portal-dev"
+  }
+}
