@@ -2,7 +2,13 @@
 import { createReducer, on } from "@ngrx/store";
 import { clearUserData, setUserData } from "./user.actions";
 
-export type User = any;
+export interface User {
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+  emailVerified: boolean;
+};
 
 export interface UserState {
   user: User | null;

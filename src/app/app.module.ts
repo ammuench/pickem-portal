@@ -6,6 +6,7 @@ import { ToolbarModule } from "primeng/toolbar";
 import { ButtonModule } from "primeng/button";
 import { SplitButtonModule } from "primeng/splitbutton";
 import { CardModule } from "primeng/card";
+import { InputTextModule } from "primeng/inputtext";
 
 //NGRX
 import { StoreModule } from "@ngrx/store";
@@ -25,6 +26,7 @@ import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
     //ANGULAR
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     //NGRX
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -56,6 +60,7 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
     ButtonModule,
     SplitButtonModule,
     CardModule,
+    InputTextModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
