@@ -23,8 +23,11 @@
         </div>
       </form>
       <ng-template pTemplate="footer">
+        <p class="c_loginForm_error" *ngIf="hasFormError | async">
+          {{ formError || (loginError$ | async) }}
+        </p>
         <div class="c_loginForm__buttons">
-          <p-button>Login</p-button>
+          <p-button (onClick)="submitLogin()">Login</p-button>
         </div>
       </ng-template>
     </p-card>

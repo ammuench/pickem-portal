@@ -10,8 +10,13 @@ import { InputTextModule } from "primeng/inputtext";
 
 //NGRX
 import { StoreModule } from "@ngrx/store";
-import { reducers, metaReducers } from "./reducers";
+import {
+  reducers,
+  metaReducers,
+  effects,
+} from "./reducers";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { EffectsModule } from "@ngrx/effects";
 
 //FIREBASE
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
@@ -53,6 +58,7 @@ import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
+    EffectsModule.forRoot(effects),
     //FIREBASE
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

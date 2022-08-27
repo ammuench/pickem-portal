@@ -1,3 +1,5 @@
+@import "variables";
+
 .c_signUpPage {
   display: grid;
   justify-content: center;
@@ -23,4 +25,8 @@
 
 .c_signUpPage__signupCopy {
   text-align: center;
+}
+
+.c_signup_error {
+  color: $font-error;
 }

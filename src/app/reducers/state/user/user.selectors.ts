@@ -1,10 +1,10 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store";
 import { UserState } from "./user.reducer";
 
-export const selectUser = createFeatureSelector<UserState>("user");
+export const selectUserState = createFeatureSelector<UserState>("user");
 
 export const selectLoginState = createSelector(
-  selectUser,
+  selectUserState,
   (userState) => {
     if (userState.user) {
       return true;
@@ -12,4 +12,19 @@ export const selectLoginState = createSelector(
 
     return false;
   }
+);
+
+export const selectActiveUser = createSelector(
+  selectUserState,
+  ({ user }) => user
+);
+
+export const selectLoginPendingStatus = createSelector(
+  selectUserState,
+  ({ pendingLoginAction }) => pendingLoginAction
+);
+
+export const selectLoginError = createSelector(
+  selectUserState,
+  ({ loginError }) => loginError
 );

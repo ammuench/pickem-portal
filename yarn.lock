@@ -1893,6 +1893,13 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@ngrx/effects@^14.3.0":
+  version "14.3.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-14.3.0.tgz#192d6b0311477f8e88944209fdaacb8e8f1f261c"
+  integrity sha512-oMe4yYRiqgE3Q6h77KC6JoqdAGYIaSK1DSPUtsnvva201pPbj//TB7OgIEySQDHCMTeABPde0VqlkTSuFKo6yA==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/eslint-plugin@^14.3.0":
   version "14.3.0"
   resolved "https://registry.yarnpkg.com/@ngrx/eslint-plugin/-/eslint-plugin-14.3.0.tgz#bea364616fa1f1a285199dd66ef9bbb8e2696608"

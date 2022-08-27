@@ -1,4 +1,11 @@
 import { Component } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { selectActiveUser } from "@userstate/user.selectors";
+import {
+  map,
+  Observable,
+  of,
+} from "rxjs";
 
 @Component({
   selector: "app-home-page",
@@ -6,5 +13,16 @@ import { Component } from "@angular/core";
   styleUrls: ["./home-page.component.scss"],
 })
 export class HomePageComponent {
+  public userInfo$: Observable<string | null> = of(null);
 
+  constructor(private _store: Store) { }
+
+  public ngOnInit(): void {
+    this.userInfo$ = this._store.select(selectActiveUser).pipe(map((userObj) => {
+      if (userObj) {
+        return JSON.stringify(userObj);
+      }
+      return null;
+    }));
+  }
 }
