@@ -6,6 +6,8 @@ import {
   Validators,
 } from "@angular/forms";
 import { Store } from "@ngrx/store";
+import { PoolService } from "@services/pool/pool.service";
+import { CreatePoolObject } from "@services/pool/pool.types";
 import { User } from "@userstate/user.reducer";
 import { selectActiveUser } from "@userstate/user.selectors";
 import { Observable } from "rxjs";
@@ -54,7 +56,8 @@ export class CreatePoolPageComponent implements OnInit {
 
   constructor(
     private _store: Store,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _poolService: PoolService
   ) { }
 
   public ngOnInit(): void {
@@ -65,12 +68,21 @@ export class CreatePoolPageComponent implements OnInit {
     return formFieldHasError(this.createPoolForm, formKey);
   }
 
-  public submitPool(createPoolForm: FormGroup): void {
+  public async submitPool(createPoolForm: FormGroup): Promise<void> {
     createPoolForm.markAllAsTouched();
     this.isSubmitting = true;
     this.formError = null;
     if (createPoolForm.valid) {
-
+      try {
+        const payload: CreatePoolObject = {
+          ...createPoolForm.value,
+        };
+        await this._poolService.createNewPool(payload);
+        window.alert("success");
+      } catch (e) {
+        this.formError = "An error occurred while submitting your form";
+        this.isSubmitting = false;
+      }
     } else {
       this.formError = "Please Complete All Required Fields";
       this.isSubmitting = false;
