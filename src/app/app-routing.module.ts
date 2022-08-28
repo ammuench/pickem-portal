@@ -4,6 +4,7 @@ import { AuthGuard, redirectUnauthorizedTo } from "@angular/fire/auth-guard";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component";
+import { HasuserdataGuard } from "./guards/hasuserdata.guard";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["/login"]);
 
@@ -11,7 +12,7 @@ const routes: Routes = [
   {
     path: "",
     component: HomePageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, HasuserdataGuard],
     data: {
       authGuardPipe: redirectUnauthorizedToLogin,
     },
@@ -19,7 +20,7 @@ const routes: Routes = [
   {
     path: "home",
     component: HomePageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, HasuserdataGuard],
     data: {
       authGuardPipe: redirectUnauthorizedToLogin,
     },

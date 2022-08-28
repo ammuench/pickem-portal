@@ -3,10 +3,9 @@ import { UserCredential } from "@angular/fire/auth";
 import { createReducer, on } from "@ngrx/store";
 import {
   clearUserData,
-  loginUser,
+  loginRegisterUserSuccess,
   loginUserError,
   setUserData,
-  signupUser,
   signupUserError,
 } from "./user.actions";
 
@@ -32,24 +31,21 @@ export const initialState: UserState = {
 
 export const userReducer = createReducer(
   initialState,
-  on(signupUser, (state): UserState => ({
-    ...state,
-    loginError: null,
-    pendingLoginAction: true,
-  })),
   on(signupUserError, (state, { error }): UserState => ({
     ...state,
     loginError: error,
     pendingLoginAction: false,
   })),
-  on(loginUser, (state): UserState => ({
-    ...state,
-    loginError: null,
-    pendingLoginAction: true,
-  })),
+
   on(loginUserError, (state, { error }): UserState => ({
     ...state,
     loginError: error,
+    pendingLoginAction: false,
+  })),
+  on(loginRegisterUserSuccess, (state, { userData }): UserState => ({
+    ...state,
+    user: userData,
+    loginError: null,
     pendingLoginAction: false,
   })),
   on(setUserData, (state, { userData }): UserState => ({

@@ -4,10 +4,15 @@ import {
   FormControl,
   Validators,
 } from "@angular/forms";
+import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { AuthService } from "@services/auth/auth.service";
 import { LoginCredentials } from "@services/auth/auth.types";
-import { clearUserData, loginUser } from "@userstate/user.actions";
+import {
+  clearUserData,
+  loginRegisterUserSuccess,
+  loginUserError,
+} from "@userstate/user.actions";
 import { selectLoginError } from "@userstate/user.selectors";
 import {
   map,
@@ -31,7 +36,8 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private _store: Store,
     private _fb: FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _router: Router
   ) { }
 
   public ngOnInit(): void {
@@ -49,20 +55,30 @@ export class LoginPageComponent implements OnInit {
     );
   }
 
-  public submitLogin(): void {
+  public async submitLogin(): Promise<void> {
     this.loginForm.markAsTouched();
     this.formError = null;
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       if (email && password) {
-        const registrationCredentials: LoginCredentials = {
+        const loginCreds: LoginCredentials = {
           email,
           password,
         };
-        this._store.dispatch(loginUser(registrationCredentials));
+        try {
+          const userLoggedInDetails = await this._authService.loginUser(loginCreds);
+          this._store.dispatch(loginRegisterUserSuccess({
+            userData: userLoggedInDetails,
+          }));
+        } catch (e) {
+          console.error(e);
+          this._store.dispatch(loginUserError({
+            error: "Error logging in, please try again",
+          }));
+        }
+      } else {
+        this.formError = "Please Complete All Required Fields";
       }
-    } else {
-      this.formError = "Please Complete All Required Fields";
     }
   }
 }

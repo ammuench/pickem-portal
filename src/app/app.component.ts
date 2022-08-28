@@ -9,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
 export class AppComponent {
   constructor(private _activatedRouteSnap: ActivatedRoute) { }
 
-  public ngOnInit(): void {
-    console.log(this._activatedRouteSnap.snapshot);
+  public onActivate(): void {
+    console.log(window.location.href);
   }
 }

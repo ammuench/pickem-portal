@@ -12,71 +12,27 @@ import {
   map,
   mergeMap,
   of,
+  tap,
 } from "rxjs";
-import { LocalStorageKeys } from "@enums/localStorageKeys.enum";
 import {
   clearUserData,
-  loginUser,
-  loginUserError,
   logoutUser,
-  setUserData,
-  signupUser,
-  signupUserError,
+  loginRegisterUserSuccess,
 } from "./user.actions";
 
 @Injectable()
 export class UserEffects {
-
-  public signUpUser$ = createEffect(() =>
+  public loginRegisterUserSuccess$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(signupUser),
-      mergeMap((loginCredentials) => {
-        return from(this._authService.registerUser(loginCredentials)).pipe(
-          map((res) => {
-            return setUserData({
-              userData: res,
-            });
-          }),
-          catchError(() => {
-            return of(signupUserError({
-              error: "There was an error creating an account, please try again",
-            }));
-          })
-        );
-      })
-    )
-  );
-
-  public loginUser$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(loginUser),
-      mergeMap((loginCredentials) => {
-        return from(this._authService.loginUser(loginCredentials)).pipe(
-          map((res) => {
-            return setUserData({
-              userData: res,
-            });
-          }),
-          catchError(() => {
-            return of(loginUserError({
-              error: "There was an error logging in, please try again",
-            }));
-          })
-        );
-      })
-    )
-  );
-
-  public setUserData$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(setUserData),
-      map((userData) => {
-        localStorage.setItem(LocalStorageKeys.USER, JSON.stringify(userData));
+      ofType(loginRegisterUserSuccess),
+      map(() => {
         return {
-          type: "NOOP_ACTION",
+          type: "NOOP ACTION",
         };
+      }),
+      tap(() => {
+        this._router.navigate(["/home"]);
       })
-
     )
   );
 

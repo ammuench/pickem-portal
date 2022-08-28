@@ -7,7 +7,11 @@ import {
 import { Store } from "@ngrx/store";
 import { AuthService } from "@services/auth/auth.service";
 import { SignupCredentials } from "@services/auth/auth.types";
-import { clearUserData, signupUser } from "@userstate/user.actions";
+import {
+  clearUserData,
+  loginRegisterUserSuccess,
+  signupUserError,
+} from "@userstate/user.actions";
 import { selectLoginError } from "@userstate/user.selectors";
 import {
   map,
@@ -49,7 +53,7 @@ export class SignUpPageComponent implements OnInit {
     );
   }
 
-  public submitSignup(): void {
+  public async submitSignup(): Promise<void> {
     this.signupForm.markAsTouched();
     this.formError = null;
     if (this.signupForm.valid) {
@@ -59,7 +63,17 @@ export class SignUpPageComponent implements OnInit {
           email,
           password,
         };
-        this._store.dispatch(signupUser(registrationCredentials));
+        try {
+          const newUserProfile = await this._authService.registerUser(registrationCredentials);
+          this._store.dispatch(loginRegisterUserSuccess({
+            userData: newUserProfile,
+          }));
+        } catch (e) {
+          console.error(e);
+          this._store.dispatch(signupUserError({
+            error: "Error signing up, please try again",
+          }));
+        }
       }
     } else {
       this.formError = "Please Complete All Required Fields";

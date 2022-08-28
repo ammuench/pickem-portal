@@ -1,11 +1,5 @@
-import { User, UserCredential } from "@angular/fire/auth";
+import { UserCredential } from "@angular/fire/auth";
 import { createAction, props } from "@ngrx/store";
-import { LoginCredentials } from "@services/auth/auth.types";
-
-export const loginUser = createAction(
-  "[User] Login User",
-  props<LoginCredentials>()
-);
 
 export const loginUserError = createAction(
   "[User] Login User Error",
@@ -16,11 +10,6 @@ export const logoutUser = createAction(
   "[User] Logout User"
 );
 
-export const signupUser = createAction(
-  "[User] SignUp User",
-  props<LoginCredentials>()
-);
-
 export const signupUserError = createAction(
   "[User] SignUp User Error",
   props<{ error: string }>()
@@ -28,8 +17,14 @@ export const signupUserError = createAction(
 
 export const restoreUserSession = createAction(
   "[User] Restore User Sesssion",
-  props<{ userData: User }>()
+  props<{ userData: any }>()
 );
+
+export const loginRegisterUserSuccess = createAction(
+  "[User] Set User Data",
+  props<{ userData: any }>()
+);
+
 
 export const setUserData = createAction(
   "[User] Set User Data",
