@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 //PrimeNG
 import { ToolbarModule } from "primeng/toolbar";
@@ -10,6 +12,11 @@ import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
 import { AvatarModule } from "primeng/avatar";
 import { MenuModule } from "primeng/menu";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { CalendarModule } from "primeng/calendar";
+import { ToggleButtonModule } from "primeng/togglebutton";
+import { SelectButtonModule } from "primeng/selectbutton";
+import { ProgressSpinnerModule } from "primeng/progressspinner";
 
 //NGRX
 import { StoreModule } from "@ngrx/store";
@@ -34,8 +41,9 @@ import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component";
+import { CreatePoolPageComponent } from "./pages/create-pool-page/create-pool-page.component";
+import { ProgressSpinnerComponent } from "./components/progress-spinner/progress-spinner.component";
 
 
 @NgModule({
@@ -45,6 +53,8 @@ import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component
     LoginPageComponent,
     HomePageComponent,
     SignUpPageComponent,
+    CreatePoolPageComponent,
+    ProgressSpinnerComponent,
   ],
   imports: [
     //ANGULAR
@@ -53,6 +63,7 @@ import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     //NGRX
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -75,6 +86,11 @@ import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component
     InputTextModule,
     AvatarModule,
     MenuModule,
+    InputTextareaModule,
+    CalendarModule,
+    ToggleButtonModule,
+    SelectButtonModule,
+    ProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

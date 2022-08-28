@@ -1,0 +1,58 @@
+@import "variables";
+
+.c_createPoolPage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.c_createPoolPage__formContainer {
+  max-width: 750px;
+}
+
+.c_createPoolForm__field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  input,
+  textarea {
+    width: 100%;
+  }
+
+  small.c_createPoolForm__field__helper {
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    margin-left: 0.25rem;
+  }
+
+  &.c_createPoolForm__field--error {
+    label {
+      color: $font-error;
+    }
+  }
+}
+
+.c_createPoolForm__field__errorTxt {
+  color: $font-error;
+  margin-left: 0.25rem;
+  font-weight: bold;
+}
+
+.c_createPoolForm_error {
+  color: $font-error;
+  text-align: right;
+}
+
+.c_createPoolForm__buttons {
+  text-align: right;
+}

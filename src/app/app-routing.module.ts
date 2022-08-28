@@ -5,6 +5,7 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component";
 import { HasuserdataGuard } from "./guards/hasuserdata.guard";
+import { CreatePoolPageComponent } from "./pages/create-pool-page/create-pool-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["/login"]);
 
@@ -20,6 +21,14 @@ const routes: Routes = [
   {
     path: "home",
     component: HomePageComponent,
+    canActivate: [AuthGuard, HasuserdataGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin,
+    },
+  },
+  {
+    path: "createPool",
+    component: CreatePoolPageComponent,
     canActivate: [AuthGuard, HasuserdataGuard],
     data: {
       authGuardPipe: redirectUnauthorizedToLogin,

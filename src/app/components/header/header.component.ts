@@ -11,6 +11,7 @@ import {
   selectUsername,
 } from "@userstate/user.selectors";
 import { logoutUser } from "@userstate/user.actions";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -21,6 +22,32 @@ export class HeaderComponent implements OnInit {
   public userIsLoggedIn$: Observable<boolean> = of(false);
 
   public authMenuItems = [
+    {
+      label: "Pools",
+      items: [
+        {
+          label: "Create Pick-Em",
+          icon: "pi pi-plus",
+          command: () => {
+            this.navigateToCreatePool();
+          },
+        },
+        {
+          label: "Manage Pick-Ems",
+          icon: "pi pi-server",
+          command: () => {
+            this.navigateToManagePools();
+          },
+        },
+        {
+          label: "Find Pick-Em",
+          icon: "pi pi-search",
+          command: () => {
+            this.navigateToPoolSearch();
+          },
+        },
+      ],
+    },
     {
       label: "Options",
       items: [
@@ -35,9 +62,7 @@ export class HeaderComponent implements OnInit {
     },
   ];
 
-  constructor(private _store: Store) {
-
-  }
+  constructor(private _store: Store, private _router: Router) { }
 
   public ngOnInit(): void {
     this.userIsLoggedIn$ = this._store.select(selectLoginState);
@@ -58,6 +83,14 @@ export class HeaderComponent implements OnInit {
       })
     );
   }
+
+  public navigateToCreatePool(): void {
+    this._router.navigate(["/createPool"]);
+  }
+
+  public navigateToManagePools(): void { }
+
+  public navigateToPoolSearch(): void { }
 
   public logOut(): void {
     this._store.dispatch(logoutUser());

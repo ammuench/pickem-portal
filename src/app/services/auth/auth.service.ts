@@ -15,6 +15,7 @@ import {
   docData,
 } from "@angular/fire/firestore";
 import { firstValueFrom } from "rxjs";
+import { User } from "@userstate/user.reducer";
 
 @Injectable({
   providedIn: "root",
@@ -36,7 +37,7 @@ export class AuthService {
     return null;
   }
 
-  public async registerUser({ email, password, userName, firstName, lastName }: SignupCredentials): Promise<any> {
+  public async registerUser({ email, password, userName, firstName, lastName }: SignupCredentials): Promise<User> {
     const userAuthRecordRes = await createUserWithEmailAndPassword(this.auth, email, password);
     const userAuthRecord = {
       ...userAuthRecordRes,
@@ -49,7 +50,7 @@ export class AuthService {
       email,
     });
     const userProfileDoc = doc(this._firestore, `users/${user.uid}`);
-    return await firstValueFrom(docData(userProfileDoc));
+    return await firstValueFrom(docData(userProfileDoc)) as User;
   }
 
   public logoutUser() {

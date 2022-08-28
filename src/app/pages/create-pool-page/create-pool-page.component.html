@@ -1,0 +1,151 @@
+<div class="c_createPoolPage">
+  <div class="c_createPoolPage__formContainer">
+    <p-card header="Create an New Pick-em Pool">
+      <form [formGroup]="createPoolForm" class="c_createPoolForm">
+        <div
+          class="c_createPoolForm__field"
+          [ngClass]="{
+            'c_createPoolForm__field--error': applyFormErrorClass('poolTitle')
+          }"
+        >
+          <div>
+            <label for="poolTitle">Pool Title*</label>
+            <input
+              id="poolTitle"
+              type="text"
+              aria-describedby="poolTitle-help"
+              pInputText
+              formControlName="poolTitle"
+              placeholder="My Pick-em Pool"
+            />
+          </div>
+          <small class="c_createPoolForm__field__helper" id="poolTitle-help">
+            Enter the title of your pool, this will be shown to all users.
+          </small>
+        </div>
+        <div class="c_createPoolForm__field">
+          <div>
+            <label for="poolDescription">Pool Description</label>
+            <textarea
+              id="poolDescription"
+              aria-describedby="poolDescription-help"
+              pInputTextarea
+              formControlName="poolDescription"
+              placeholder="This is the pick-em pool I'm making to play with my group of friends!"
+            ></textarea>
+          </div>
+          <small
+            class="c_createPoolForm__field__helper"
+            id="poolDescription-help"
+          >
+            (Optional) Enter a brief description of your pool, this will be
+            shown to all users.
+          </small>
+        </div>
+        <div
+          class="c_createPoolForm__field"
+          [ngClass]="{
+            'c_createPoolForm__field--error':
+              applyFormErrorClass('poolStartDate')
+          }"
+        >
+          <div>
+            <label for="poolStartDate">Pool Start Date*</label>
+            <p-calendar
+              id="poolStartDate"
+              formControlName="poolStartDate"
+            ></p-calendar>
+          </div>
+          <small
+            class="c_createPoolForm__field__helper"
+            id="poolStartDate-help"
+          >
+            This is the date registration will close and the first pool can be
+            sent out</small
+          >
+        </div>
+        <div
+          class="c_createPoolForm__field"
+          [ngClass]="{
+            'c_createPoolForm__field--error':
+              applyFormErrorClass('poolEndDate') || endDateIsInvalid
+          }"
+        >
+          <div>
+            <label for="poolEndDate">Pool End Date*</label>
+            <p-calendar
+              id="poolEndDate"
+              formControlName="poolEndDate"
+            ></p-calendar>
+          </div>
+          <small
+            class="c_createPoolForm__field__errorTxt"
+            *ngIf="endDateIsInvalid"
+          >
+            End date must be AFTER start date
+          </small>
+          <small class="c_createPoolForm__field__helper" id="poolEndDate-help">
+            This is the date your pool will end and you will calculate the
+            winners</small
+          >
+        </div>
+        <div class="c_createPoolForm__field">
+          <div>
+            <label for="poolIsPublic">Visibility*</label>
+            <p-selectButton
+              [options]="publicPrivateOptions"
+              optionLabel="name"
+              optionValue="bool"
+              formControlName="poolIsPublic"
+              id="poolIsPublic"
+            >
+            </p-selectButton>
+          </div>
+          <small class="c_createPoolForm__field__helper" id="poolIsPublic-help">
+            Private pools can only be joined with a code provided by the owner.
+            <br />
+            Public pools can be joined by anyone from the search page.
+            <br />
+            This can be changed later.
+          </small>
+        </div>
+        <div class="c_createPoolForm__field">
+          <div>
+            <label for="poolGameType">Pool Game Type*</label>
+            <p-selectButton
+              [options]="gameTypeOptions"
+              optionLabel="name"
+              optionValue="name"
+              formControlName="poolGameType"
+              id="poolGameType"
+            >
+            </p-selectButton>
+          </div>
+          <small class="c_createPoolForm__field__helper" id="poolGameType-help">
+            Pick your game type between NFL or College Football. This cannot be
+            changed later.
+          </small>
+        </div>
+      </form>
+      <ng-template pTemplate="footer">
+        <hr />
+        <p class="c_createPoolForm_error" *ngIf="formError">
+          {{ formError }}
+        </p>
+        <div class="c_createPoolForm__buttons">
+          <p-button
+            (onClick)="submitPool(createPoolForm)"
+            styleClass="p-button-success"
+          >
+            <app-progress-spinner
+              spinnerSizePx="25px"
+              *ngIf="isSubmitting; else defaultButtonCopy"
+            >
+            </app-progress-spinner>
+            <ng-template #defaultButtonCopy> Create Pool </ng-template>
+          </p-button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
