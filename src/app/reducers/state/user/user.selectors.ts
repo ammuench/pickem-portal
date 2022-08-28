@@ -19,6 +19,17 @@ export const selectActiveUser = createSelector(
   ({ user }) => user
 );
 
+export const selectUsername = createSelector(
+  selectUserState,
+  ({ user }) => {
+    if (user) {
+      return user.userName;
+    }
+
+    return "";
+  }
+);
+
 export const selectUserFullName = createSelector(
   selectUserState,
   ({ user }) => {

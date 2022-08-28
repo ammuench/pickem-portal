@@ -5,7 +5,11 @@ import {
   Observable,
   of,
 } from "rxjs";
-import { selectActiveUser, selectLoginState } from "@userstate/user.selectors";
+import {
+  selectActiveUser,
+  selectLoginState,
+  selectUsername,
+} from "@userstate/user.selectors";
 import { logoutUser } from "@userstate/user.actions";
 
 @Component({
@@ -37,6 +41,10 @@ export class HeaderComponent implements OnInit {
 
   public ngOnInit(): void {
     this.userIsLoggedIn$ = this._store.select(selectLoginState);
+  }
+
+  public get userName$(): Observable<string> {
+    return this._store.select(selectUsername);
   }
 
   public get avatarLetter$(): Observable<string> {

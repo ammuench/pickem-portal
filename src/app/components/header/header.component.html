@@ -7,6 +7,9 @@
     <div class="p-toolbar-group-right">
       <ng-container *ngIf="userIsLoggedIn$ | async">
         <button class="c_header__toggleButton" (click)="menu.toggle($event)">
+          <span class="c_header__toggleButton__username">{{
+            userName$ | async
+          }}</span>
           <p-avatar
             [style]="{ 'background-color': '#FFD54F' }"
             [label]="(avatarLetter$ | async) || ''"
