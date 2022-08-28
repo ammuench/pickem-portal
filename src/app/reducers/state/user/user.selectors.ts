@@ -19,6 +19,17 @@ export const selectActiveUser = createSelector(
   ({ user }) => user
 );
 
+export const selectUserFullName = createSelector(
+  selectUserState,
+  ({ user }) => {
+    if (user) {
+      return `${user.firstName} ${user.lastName}`;
+    }
+
+    return "";
+  }
+);
+
 export const selectLoginPendingStatus = createSelector(
   selectUserState,
   ({ pendingLoginAction }) => pendingLoginAction

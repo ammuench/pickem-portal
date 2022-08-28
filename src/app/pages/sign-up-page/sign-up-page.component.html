@@ -4,9 +4,45 @@
       <form [formGroup]="signupForm" class="c_signUpForm">
         <div>
           <span class="p-float-label p-input-icon-left">
-            <i class="pi pi-user"></i>
+            <i class="pi pi-user-plus"></i>
+            <input
+              formControlName="firstName"
+              id="firstName"
+              type="text"
+              pInputText
+            />
+            <label for="firstName">First Name</label>
+          </span>
+        </div>
+        <div>
+          <span class="p-float-label p-input-icon-left">
+            <i class="pi pi-user-minus"></i>
+            <input
+              formControlName="lastName"
+              id="lastName"
+              type="text"
+              pInputText
+            />
+            <label for="lastName">Last Name</label>
+          </span>
+        </div>
+        <div>
+          <span class="p-float-label p-input-icon-left">
+            <i class="pi pi-desktop"></i>
             <input formControlName="email" id="email" type="text" pInputText />
             <label for="email">Email</label>
+          </span>
+        </div>
+        <div>
+          <span class="p-float-label p-input-icon-left">
+            <i class="pi pi-user"></i>
+            <input
+              formControlName="userName"
+              id="userName"
+              type="text"
+              pInputText
+            />
+            <label for="userName">Username</label>
           </span>
         </div>
         <div>

@@ -1,0 +1,13 @@
+.c_homePage {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  justify-items: center;
+  width: 100%;
+  align-items: center;
+  height: 100%;
+}
+
+.c_homePage__emptySplashCopy {
+  text-align: center;
+}

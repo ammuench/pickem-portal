@@ -3,4 +3,8 @@ export interface LoginCredentials {
   password: string;
 }
 
-export interface SignupCredentials extends LoginCredentials { };
+export interface SignupCredentials extends LoginCredentials {
+  firstName: string;
+  lastName: string;
+  userName: string;
+};

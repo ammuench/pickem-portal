@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { selectActiveUser } from "@userstate/user.selectors";
+import { selectActiveUser, selectUserFullName } from "@userstate/user.selectors";
 import {
   map,
   Observable,
@@ -24,5 +24,9 @@ export class HomePageComponent {
       }
       return null;
     }));
+  }
+
+  public get fullName$(): Observable<string> {
+    return this._store.select(selectUserFullName);
   }
 }

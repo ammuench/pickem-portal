@@ -28,6 +28,9 @@ export class SignUpPageComponent implements OnInit {
   public formError: string | null = null;
   public signUpError$: Observable<string | null> = of(null);
   public signupForm = this._fb.group({
+    firstName: new FormControl("", [Validators.required]),
+    lastName: new FormControl("", [Validators.required]),
+    userName: new FormControl("", [Validators.required]),
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required]),
   });
@@ -57,11 +60,14 @@ export class SignUpPageComponent implements OnInit {
     this.signupForm.markAsTouched();
     this.formError = null;
     if (this.signupForm.valid) {
-      const { email, password } = this.signupForm.value;
-      if (email && password) {
+      const { email, password, firstName, lastName, userName } = this.signupForm.value;
+      if (email && password && firstName && lastName && userName) {
         const registrationCredentials: SignupCredentials = {
           email,
           password,
+          firstName,
+          lastName,
+          userName,
         };
         try {
           const newUserProfile = await this._authService.registerUser(registrationCredentials);

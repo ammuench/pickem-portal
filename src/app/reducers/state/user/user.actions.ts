@@ -1,5 +1,5 @@
-import { UserCredential } from "@angular/fire/auth";
 import { createAction, props } from "@ngrx/store";
+import { User } from "./user.reducer";
 
 export const loginUserError = createAction(
   "[User] Login User Error",
@@ -21,14 +21,14 @@ export const restoreUserSession = createAction(
 );
 
 export const loginRegisterUserSuccess = createAction(
-  "[User] Set User Data",
-  props<{ userData: any }>()
+  "[User] Login/Register User Success",
+  props<{ userData: User }>()
 );
 
 
 export const setUserData = createAction(
   "[User] Set User Data",
-  props<{ userData: UserCredential }>()
+  props<{ userData: User }>()
 );
 
 

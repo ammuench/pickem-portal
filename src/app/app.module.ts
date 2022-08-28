@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 //PrimeNG
 import { ToolbarModule } from "primeng/toolbar";
@@ -7,6 +8,8 @@ import { ButtonModule } from "primeng/button";
 import { SplitButtonModule } from "primeng/splitbutton";
 import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
+import { AvatarModule } from "primeng/avatar";
+import { MenuModule } from "primeng/menu";
 
 //NGRX
 import { StoreModule } from "@ngrx/store";
@@ -46,6 +49,7 @@ import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component
   imports: [
     //ANGULAR
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -69,6 +73,8 @@ import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component
     SplitButtonModule,
     CardModule,
     InputTextModule,
+    AvatarModule,
+    MenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

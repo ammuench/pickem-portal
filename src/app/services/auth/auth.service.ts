@@ -7,7 +7,7 @@ import {
 } from "@angular/fire/auth";
 
 import { Injectable } from "@angular/core";
-import { LoginCredentials } from "./auth.types";
+import { LoginCredentials, SignupCredentials } from "./auth.types";
 import {
   setDoc,
   doc,
@@ -36,15 +36,17 @@ export class AuthService {
     return null;
   }
 
-  public async registerUser({ email, password }: LoginCredentials): Promise<any> {
+  public async registerUser({ email, password, userName, firstName, lastName }: SignupCredentials): Promise<any> {
     const userAuthRecordRes = await createUserWithEmailAndPassword(this.auth, email, password);
     const userAuthRecord = {
       ...userAuthRecordRes,
     };
     const user = userAuthRecord.user;
     await setDoc(doc(this._firestore, `users/${user.uid}`), {
-      firstName: "Alex",
-      lastName: "Muench",
+      firstName,
+      lastName,
+      userName,
+      email,
     });
     const userProfileDoc = doc(this._firestore, `users/${user.uid}`);
     return await firstValueFrom(docData(userProfileDoc));

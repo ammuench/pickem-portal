@@ -1,5 +1,4 @@
 
-import { UserCredential } from "@angular/fire/auth";
 import { createReducer, on } from "@ngrx/store";
 import {
   clearUserData,
@@ -10,15 +9,14 @@ import {
 } from "./user.actions";
 
 export interface User {
-  uid: string;
   email: string;
-  displayName: string;
-  photoURL: string;
-  emailVerified: boolean;
+  userName: string;
+  firstName: string;
+  lastName: boolean;
 };
 
 export interface UserState {
-  user: UserCredential | null;
+  user: User | null;
   pendingLoginAction: boolean;
   loginError: string | null;
 }

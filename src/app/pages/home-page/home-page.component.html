@@ -1,5 +1,7 @@
-<p>home-page works!</p>
-
-<code>
-  {{ this.userInfo$ | async }}
-</code>
+<div class="c_homePage">
+  <div class="c_homePage__emptySplashCopy">
+    <h2>Welcome Back, {{ fullName$ | async }}</h2>
+    <img src="/assets/images/home-empty-splash.png" />
+    <p>You haven't joined any pick-em pools yet, <a>find one now!</a></p>
+  </div>
+</div>
