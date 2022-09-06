@@ -50,3 +50,13 @@ export const selectLoginError = createSelector(
   selectUserState,
   ({ loginError }) => loginError
 );
+
+export const selectUID = createSelector(
+  selectActiveUser,
+  (user) => {
+    if (user) {
+      return user.uid;
+    }
+    return null;
+  }
+);

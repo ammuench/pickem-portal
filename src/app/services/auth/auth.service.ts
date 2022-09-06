@@ -48,6 +48,7 @@ export class AuthService {
       lastName,
       userName,
       email,
+      uid: user.uid,
     });
     const userProfileDoc = doc(this._firestore, `users/${user.uid}`);
     return await firstValueFrom(docData(userProfileDoc)) as User;

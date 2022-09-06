@@ -1,8 +1,23 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Auth } from "@angular/fire/auth";
-import { firstValueFrom } from "rxjs";
-import { CreatePoolObject } from "./pool.types";
+import {
+  collection,
+  collectionData,
+  CollectionReference,
+  Firestore,
+  query,
+  where,
+} from "@angular/fire/firestore";
+import { Store } from "@ngrx/store";
+import { selectUID } from "@userstate/user.selectors";
+import {
+  first,
+  firstValueFrom,
+  mergeMap,
+  Observable,
+} from "rxjs";
+import { CreatePoolObject, PickemPool } from "./pool.types";
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +25,9 @@ import { CreatePoolObject } from "./pool.types";
 export class PoolService {
   constructor(
     private _http: HttpClient,
-    private _auth: Auth
+    private _auth: Auth,
+    private _store: Store,
+    private _firestore: Firestore
   ) { }
 
   public async createNewPool(newPool: CreatePoolObject): Promise<any> {
@@ -32,4 +49,14 @@ export class PoolService {
       return new Error("An error occurred while trying to create a pool");
     }
   };
+
+  public getUserPools(): Observable<PickemPool[]> {
+    return this._store.select(selectUID).pipe(
+      mergeMap((uid) => {
+        const ref = collection(this._firestore, "pickemPools") as CollectionReference<PickemPool>;
+        const q = query<PickemPool>(ref, where("poolMemberIds", "array-contains", uid));
+        return collectionData(q).pipe(first());
+      })
+    );
+  }
 }

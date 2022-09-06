@@ -13,6 +13,7 @@ export interface User {
   userName: string;
   firstName: string;
   lastName: boolean;
+  uid: string;
 };
 
 export interface UserState {
