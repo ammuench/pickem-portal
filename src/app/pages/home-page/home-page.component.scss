@@ -6,8 +6,27 @@
   width: 100%;
   align-items: center;
   height: 100%;
+
+  h2 {
+    text-align: center;
+  }
 }
 
 .c_homePage__emptySplashCopy {
   text-align: center;
+}
+
+.c_homePage__poolsList {
+  h3 {
+    text-align: center;
+  }
+}
+
+.c_homePage__userPoolList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1rem;
+  justify-content: center;
 }

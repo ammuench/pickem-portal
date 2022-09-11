@@ -1,0 +1,24 @@
+<p-card *ngIf="userPool">
+  <ng-template pTemplate="header">
+    <h4 class="c_poolCard__header">
+      {{ userPool.poolTitle }}
+    </h4>
+  </ng-template>
+  <div class="c_poolCard__body">
+    <dl>
+      <dt>Game Type:</dt>
+      <dd>{{ userPool.poolGameType }}</dd>
+      <ng-container *ngIf="userPool.poolDescription">
+        <dt>Description:</dt>
+        <dd>{{ userPool.poolDescription }}</dd>
+      </ng-container>
+      <dt>Start Date:</dt>
+      <dd>{{ userPool.poolStartDate | date: "longDate" }}</dd>
+      <dt>End Date:</dt>
+      <dd>{{ userPool.poolEndDate | date: "longDate" }}</dd>
+    </dl>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button label="Go to Pool"></p-button>
+  </ng-template>
+</p-card>

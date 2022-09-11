@@ -45,6 +45,7 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { SignUpPageComponent } from "./pages/sign-up-page/sign-up-page.component";
 import { CreatePoolPageComponent } from "./pages/create-pool-page/create-pool-page.component";
 import { ProgressSpinnerComponent } from "./components/progress-spinner/progress-spinner.component";
+import { PoolCardComponent } from "./components/pool-card/pool-card.component";
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { ProgressSpinnerComponent } from "./components/progress-spinner/progress
     SignUpPageComponent,
     CreatePoolPageComponent,
     ProgressSpinnerComponent,
+    PoolCardComponent,
   ],
   imports: [
     //ANGULAR
